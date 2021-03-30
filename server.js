@@ -4,6 +4,7 @@ const routes = require("./controllers");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils");
+require('dotenv').config();
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -12,10 +13,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //SET UP handlebars.js ENGINE WITH CUSTOM HELPERS
-const hbs = exhbs.create();
+const hbs = exphbs.create();
 
 const sess = {
-  secret: "",
+  secret: process.env.SESSION_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,

@@ -1,12 +1,12 @@
-//REQUIRE MODEL AND DATATYPES FROM SEQUELIZE
-const { Model, Datatypes, DataTypes } = require("sequelize");
-//REQUIRE SEQUELIZE OBJECT FROM CONNECTION
+// REQUIRE MODEL AND DATATYPES FROM SEQUELIZE
+const { Model, DataTypes } = require("sequelize");
+// REQUIRE SEQUELIZE OBJECT FROM CONNECTION
 const sequelize = require("../config/connection");
 
-//CREATE USER MODEL
+// CREATE USER MODEL
 class User extends Model { }
 
-//CALL OUR MODEL, DEFINE TABLE COLUMNS AND CONFIGURATION
+// CALL OUR MODEL, DEFINE TABLE COLUMNS AND CONFIGURATION
 User.init(
   {
     id: {
@@ -15,7 +15,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,15 +23,35 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        // THE PASSWORD MUST BE AT LEAST 8 CHARACTERS LONG
         len: [8],
       }
     }
   },
   {
+    // HOOKS
+    hooks: {
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
+      },
+    },
+    // PASS IN OUR IMPORTED SEQUELIZE CONNECTION(DIRECT CONNECTION TO OUR DATABASE)
     sequelize,
+    // DON'T AUTOMATICALLY CREATE createdAt/updatedAt TIMESTAMP FIELDS
     timestamps: false,
+    // DONT PLURALIZE NAME OF DATABASE FIELD
     freezeTableName: true,
+    // USE UNDER_SCORES INSTEAD OF CamelCasing
     underscored: true,
+    // MODEL NAME STAYS LOWERCASE IN THE DATABASE
     modelName: "user",
   }
+
 );
+
+module.exports = User;
