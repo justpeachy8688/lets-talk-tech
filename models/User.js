@@ -44,12 +44,12 @@ User.init(
     sequelize,
     // DON'T AUTOMATICALLY CREATE createdAt/updatedAt TIMESTAMP FIELDS
     timestamps: false,
-    // DONT PLURALIZE NAME OF DATABASE FIELD
+    // DON'T PLURALIZE NAME OF DATABASE FIELD
     freezeTableName: true,
     // USE UNDER_SCORES INSTEAD OF CamelCasing
     underscored: true,
     // MODEL NAME STAYS LOWERCASE IN THE DATABASE
-    modelName: "user",
+    modelName: "User",
   }
 
 );
