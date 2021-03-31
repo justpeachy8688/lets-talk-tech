@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         // FROM POST TABLE, INCLUDE THE POST ID, URL, TITLE, AND TIMESTAMP FROM POST CREATION
         attributes: [
             'id',
-            'post_text',
+            'content',
             'title',
             'created_at',
         ],
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
         // QUERY CONFIGURATION
         attributes: [
             'id',
-            'post_text',
+            'content',
             'title',
             'created_at',
         ],
@@ -95,7 +95,7 @@ router.post('/', withAuth, (req, res) => {
     // EXPECTS OBJECT {title: 'Sample Title Here', post_text: 'Here's some sample text for a post.', user_id: 1}
     Post.create({
         title: req.body.title,
-        post_text: req.body.post_content,
+        content: req.body.content,
         user_id: req.session.user_id
     })
         .then(postData => res.json(postData))
