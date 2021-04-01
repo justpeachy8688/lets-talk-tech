@@ -1,18 +1,16 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
-// const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    Post.findAll({
+router.get('/', async (req, res) => {
+    let postData = await Post.findAll({
         attributes: [
             'id',
             'title',
-            'content',
-            'created_at'
+            'content'
         ],
         include: [{
             model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'comment_text', 'post_id', 'user_id'],
             include: {
                 model: User,
                 attributes: ['username']
@@ -48,12 +46,11 @@ router.get('/post/:id', (req, res) => {
         attributes: [
             'id',
             'title',
-            'content',
-            'created_at'
+            'content'
         ],
         include: [{
             model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'comment_text', 'post_id', 'user_id'],
             include: {
                 model: User,
                 attributes: ['username']
@@ -90,7 +87,7 @@ router.get('/post/:id', (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/post');
         return;
     }
 

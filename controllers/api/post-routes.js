@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
 
 // Routes
 
-// GET api/posts/ -- GET ALL POSTS
+// GET api/post/ -- GET ALL POSTS
 router.get('/', (req, res) => {
     Post.findAll({
 
@@ -86,7 +86,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// POST api/posts -- CREATE NEW POST
+// POST api/post -- CREATE NEW POST
 router.post('/', withAuth, (req, res) => {
     // EXPECTS OBJECT {title: 'Sample Title Here', post_text: 'Here's some sample text for a post.', user_id: 1}
     Post.create({

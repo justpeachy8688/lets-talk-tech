@@ -1,11 +1,10 @@
-<!-- always looks for main.handlebars inside layout -->
-{{!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tech Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -13,17 +12,29 @@
 </head>
 
 <body>
+    <p>TEST</p>
     <nav>
         <a href="/">Tech Blog</a>
-        {{#if logged_in}}
-        <a href="/profile">Profile</a>
+        {{#if loggedIn}}
+        <p>test</p>
+        <a href="/post">Post</a>
         <button class="btn btn primary" id="logout">Logout</button>
+
         {{else}}
-        <a href="/profile">Profile</a>
+        <a href="/login">Login</a>
+        {{/if}}
     </nav>
     <div class="container">
         {{{ body }}}
     </div>
+    <footer>
+
+    </footer>
+
+    {{!-- <!-- Only include the logout script if the user is logged in -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}} --}}
 </body>
 
-</html> --}}
+</html>
