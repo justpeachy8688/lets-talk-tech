@@ -7,9 +7,7 @@ router.get('/', (req, res) => {
     // Access our User model and run .findAll() method
     //console.log('WE ARE HITTING THIS ROUTE')
     User.findAll({
-        where: {
-            id: req.params.id
-        },
+
         attributes: { exclude: ['password'] }
     })
         .then(userData => res.json(userData))
