@@ -5,17 +5,18 @@ const withAuth = require('../../utils/auth');
 //GET ALL USERS
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method
-    User.findAll({
-        where: {
-            id: req.params.id
-        },
-        attributes: { exclude: ['password'] }
-    })
-        .then(userData => res.json(userData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    console.log('WE ARE HITTING THIS ROUTE')
+    // User.findAll({
+    //     where: {
+    //         id: req.params.id
+    //     },
+    //     attributes: { exclude: ['password'] }
+    // })
+    //     .then(userData => res.json(userData))
+    //     .catch(err => {
+    //         console.log(err);
+    //         res.status(500).json(err);
+    //     });
 });
 
 //GET USER BY ID
@@ -26,7 +27,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: { exclude: ['password'] }
     })
-        .then(userdata => {
+        .then(userData => {
             if (!userData) {
                 res.status(404).json({ message: 'No user with that id!' });
                 return;
@@ -138,4 +139,17 @@ router.put('/:id', withAuth, (req, res) => {
 })
 
 //DELETE USER
+router.delete('/:id', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(userData => res.json(userData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 module.exports = router;
