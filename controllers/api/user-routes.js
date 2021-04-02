@@ -1,6 +1,45 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
+//GET ALL USERS
+router.get('/', (req, res) => {
+    // Access our User model and run .findAll() method
+    User.findAll({
+        where: {
+            id: req.params.id
+        },
+        attributes: { exclude: ['password'] }
+    })
+        .then(userData => res.json(userData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+//GET USER BY ID
+router.get('/:id', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: { exclude: ['password'] }
+    })
+        .then(userdata => {
+            if (!userData) {
+                res.status(404).json({ message: 'No user with that id!' });
+                return;
+            }
+            res.json(userData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+})
+
+//CREATE NEW USER
 router.post('/', async (req, res) => {
     console.log('This is the body', req.body);
     try {
@@ -27,6 +66,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//USER LOGIN (POST)
 router.post('/login', async (req, res) => {
     console.log("Hello");
     try {
@@ -63,7 +103,8 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+//USER LOGOUT (POST)
+router.post('/logout', withAuth, (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
@@ -73,4 +114,28 @@ router.post('/logout', (req, res) => {
     }
 });
 
+//UPDATE USER (PUT)
+router.put('/:id', withAuth, (req, res) => {
+    User.update(req.body,
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(userData => {
+            if (!userData) {
+                res.status(404).json({
+                    message: 'No user found with this id'
+                });
+                return;
+            }
+            res.json(userData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
+})
+
+//DELETE USER
 module.exports = router;

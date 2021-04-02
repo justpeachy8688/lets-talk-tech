@@ -10,7 +10,10 @@ const withAuth = require('../../utils/auth');
 // GET api/post/ -- GET ALL POSTS
 router.get('/', (req, res) => {
     Post.findAll({
-
+        where: {
+            // SPECIFY THE POST ID PARAMETER IN THE QUERY
+            id: req.params.id
+        },
         // FROM POST TABLE, INCLUDE THE POST ID, URL, TITLE, AND TIMESTAMP FROM POST CREATION
         attributes: [
             'id',
