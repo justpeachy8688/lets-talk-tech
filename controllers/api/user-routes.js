@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
             username: req.body.username,
             password: req.body.password
         })
-        console.log(password);
+        console.log("password:", password);
         // console.log(newUser);
         console.log(username);
         req.session.save(() => {
@@ -28,11 +28,12 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    // console.log("Hello");
+    console.log("Hello");
     try {
         const user = await User.findOne({ where: { username: req.body.username } });
-
+        console.log("user:", user);
         if (!user) {
+            console.log("I MADE IT HERE!");
             res
                 .status(400)
                 .json({ message: 'No user account found!' });
@@ -40,7 +41,7 @@ router.post('/login', async (req, res) => {
         }
         // console.log(user);
         const validPassword = await user.checkPassword(req.body.password);
-        console.log(validPassword);
+        console.log("valid:", validPassword);
         if (!validPassword) {
             res
                 .status(400)
