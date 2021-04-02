@@ -5,18 +5,18 @@ const withAuth = require('../../utils/auth');
 //GET ALL USERS
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method
-    console.log('WE ARE HITTING THIS ROUTE')
-    // User.findAll({
-    //     where: {
-    //         id: req.params.id
-    //     },
-    //     attributes: { exclude: ['password'] }
-    // })
-    //     .then(userData => res.json(userData))
-    //     .catch(err => {
-    //         console.log(err);
-    //         res.status(500).json(err);
-    //     });
+    //console.log('WE ARE HITTING THIS ROUTE')
+    User.findAll({
+        where: {
+            id: req.params.id
+        },
+        attributes: { exclude: ['password'] }
+    })
+        .then(userData => res.json(userData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 //GET USER BY ID
