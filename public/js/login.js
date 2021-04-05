@@ -15,7 +15,7 @@ const loginFormHandler = async (data) => {
 
         if (response.ok) {
             // IF SUCCESSFUL, REDIRECT THE BROWSER TO THE POST PAGE
-            document.location.replace('/post');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
