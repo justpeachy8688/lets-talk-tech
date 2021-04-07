@@ -79,14 +79,14 @@ router.post('/login', async (req, res) => {
             return;
         }
         // console.log(user);
-        const validPassword = await user.checkPassword(req.body.password);
-        console.log("valid:", validPassword);
-        if (!validPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password, please try again' });
-            return;
-        }
+        // const validPassword = await user.checkPassword(req.body.password);
+        // console.log("valid:", validPassword);
+        // if (!validPassword) {
+        //     res
+        //         .status(400)
+        //         .json({ message: 'Incorrect username or password, please try again' });
+        //     return;
+        // }
 
         req.session.save(() => {
             req.session.user_id = user.id;
@@ -95,7 +95,9 @@ router.post('/login', async (req, res) => {
 
             res.json({ user, message: 'You are now logged in!' });
         });
-
+        console.log(user);
+        // res.redirect('/dashboard');
+        // res.sendStatus(200);
     } catch (err) {
         //CHANGE TO MESSAGE
         res.status(400).json(err);
