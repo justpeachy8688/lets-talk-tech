@@ -8,11 +8,11 @@ router.get('/', async (req, res) => {
         let postData = await Post.findAll({
             include: [User]
         });
-        console.log("postData:", postData)
+        // console.log("postData:", postData)
         const posts = postData.map(post => post.get({
             plain: true
         }));
-        console.log("POSTS:", posts)
+        // console.log("POSTS:", posts)
         res.render('homepage', { posts });
     } catch (err) {
         console.log(err);

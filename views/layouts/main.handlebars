@@ -5,23 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Blog</title>
+    {{!-- BOOTSTRAP --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{!-- JQUERY --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {{!-- CSS LINK --}}
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <p>TEST</p>
+    {{!-- NAVBAR --}}
     <nav>
-        <a href="/">Tech Blog</a>
+        <a class="home" href="/">LetsTalkTech! </a>
         {{#if loggedIn}}
-        <p>test</p>
-        <a href="/post">Post</a>
+        {{!-- <p>test</p> --}}
+        <a class="post" href="/post">Post</a>
         <button class="btn btn primary" id="logout">Logout</button>
 
         {{else}}
-        <a href="/login">Login</a>
+        <a class="login" href="/login"> LOGIN</a>
         {{/if}}
     </nav>
     <div class="container">
@@ -31,10 +35,10 @@
 
     </footer>
 
-    {{!-- <!-- Only include the logout script if the user is logged in -->
+    {{!-- Only include the logout script if the user is logged in --}}
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
-    {{/if}} --}}
+    {{/if}}
 </body>
 
 </html>

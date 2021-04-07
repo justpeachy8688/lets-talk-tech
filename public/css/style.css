@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(53, 46, 47);
+    color: lightseagreen;
+}
+
+.post-info {
+    border: 1px solid black;
+    padding: 8px 0px 8px 20px;
+    /*top right bottom left*/
+    margin: 8px 0px 8px 0px;
+    background-color: black;
+}
+
+nav {
+    background-color: slategray;
+    height: 75px;
+    margin-bottom: 75px;
+    line-height: 75px;
+    text-decoration: none;
+}
+
+a {
+    color: snow;
+    font-size: x-large;
+}
+
+.login {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.home {
+    margin-left: 20px;
+    text-decoration: none;
+}

@@ -1,20 +1,20 @@
-const loginFormHandler = async (data) => {
-    data.preventDefault();
+const loginFormHandler = async (event) => {
+    event.preventDefault();
 
-    //COLLECT VALUES FROM THE LOGIN FORM
+    // Collect values from the login form
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
     if (username && password) {
-        //SEND a POST REQUEST TO THE API ENDPOINT
+        // Send a POST request to the API endpoint
         const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            // IF SUCCESSFUL, REDIRECT THE BROWSER TO THE POST PAGE
+            // If successful, redirect the browser to the profile page
             document.location.replace('/dashboard');
         } else {
             alert(response.statusText);

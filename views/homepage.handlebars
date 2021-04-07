@@ -1,9 +1,11 @@
-<ul class="post-list">
+<div class="container">
     {{#each posts}}
-    <li>
-        {{ title }}
-    </li>
+    <div class="post-info">
+        <h2>{{ title }}</h2>
+        <p>{{ content }}</p>
+
+    </div>
     {{/each}}
-</ul>
+</div>
 
 {{!-- {{User.username}} {{format_date createdAt}} --}}
