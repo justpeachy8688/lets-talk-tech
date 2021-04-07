@@ -37,3 +37,28 @@ a {
 .card {
 background-color:black;
 }
+
+h1 {
+    color:snow ;
+}
+
+#new-form-button {
+color: black;
+background-color: lightseagreen;
+}
+
+.home {
+    color: black;
+}
+
+.logout {
+    color: black;
+}
+
+.signup {
+    color: black;
+}
+
+.login {
+    color: black;
+}

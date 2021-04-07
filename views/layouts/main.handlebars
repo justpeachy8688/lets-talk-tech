@@ -18,14 +18,14 @@
 <body>
     {{!-- NAVBAR --}}
     <nav>
-        <a class="home" href="/">LetsTalkTech! </a>
+        <a class="home" href="/">LetsTalkTech! </a>|
         {{#if loggedIn}}
         {{!-- <p>test</p> --}}
-        <a class="post" href="/post">Post</a>
-        <button class="btn btn primary" id="logout">Logout</button>
+        <a class="logout" href="/"> LOGOUT</a>
 
         {{else}}
-        <a class="login" href="/login"> LOGIN</a>
+        <a class="login" href="/login">LOGIN </a>|
+        <a class="signup" href="/signup"> SIGNUP</a>
         {{/if}}
     </nav>
     <div class="container">

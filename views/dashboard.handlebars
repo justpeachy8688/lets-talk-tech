@@ -1,8 +1,10 @@
 {{#if posts.length}}
 <section>
-    <h2>Your Posts</h2>
+    <h1>Your Posts</h1>
     {{#each posts }}
-    <h1>{{ title }}</h1>
+    <div class="post-info">
+        <h2>{{ title }}</h2>
+    </div>
     {{/each}}
 
 </section>
@@ -10,4 +12,4 @@
 
 <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Post</a></button>
 
-<script src="./js/create.js"></script>
+{{!-- <script src="/js/create.js"></script> --}}
