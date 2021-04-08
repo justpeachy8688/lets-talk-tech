@@ -1,9 +1,11 @@
+{{!-- ADD POST FORM--}}
 <h1>NEW POST</h1>
 <div class="card">
     <form class="card-body new-post-form" id="new-post-form">
+        {{!-- TITLE INPUT AREA --}}
         <label for="post-title" class="form-label">Title</label>
         <input name="post-title" id="post-title" class="form-input" />
-
+        {{!-- CONTENT INPUT AREA --}}
         <label for="content" class="form-label">Content</label>
         <input id="content" name="content" class="form-input" />
         <button type="submit" id="new-form-button" class="btn">Create</button>

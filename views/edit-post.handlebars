@@ -1,2 +1,20 @@
-{{!-- update  --}}
+{{!-- UPDATE POST--}}
 
+{{!-- EDIT POST FORM --}}
+<h1>EDIT POST</h1>
+<div class="card">
+    <form class="card-body edit-post-form" id="edit-post-form">
+        <div class="row">
+            {{!-- TITLE INPUT AREA --}}
+            <label for="post-title" class="form-label">Title</label>
+            <input name="post-title" id="post-title" class="form-input">
+        </div>
+        {{!-- CONTENT INPUT AREA --}}
+        <div class="row">
+            <label for="content" class="form-label">Content</label>
+            <input name="content" id="content" class="form-input">
+            <button type="submit" id="edit-form-button" class="btn">Update</button>
+            <button type="submit" id="delete-button" class="btn">Delete</button>
+        </div>
+    </form>
+</div>
