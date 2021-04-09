@@ -20,8 +20,10 @@ nav {
 }
 
 a {
-    color: snow;
+    color: black;
     font-size: x-large;
+    background-color: lightseagreen;
+    text-decoration: none;
 }
 
 .login {
