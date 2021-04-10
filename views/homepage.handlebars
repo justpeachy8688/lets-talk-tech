@@ -1,12 +1,12 @@
 <div class="container">
     <h1>POSTS</h1>
-    {{#each posts}}
     <div class="post-info">
-        <h2>{{ title }}</h2>
-        <p>{{ content }}</p>
+        {{#each posts as |post| }}
+        {{> post-info post}}
+
 
     </div>
     {{/each}}
 </div>
 
-{{!-- {{User.username}} {{format_date createdAt}} --}}
+{{User.username}} {{format_date createdAt}}
