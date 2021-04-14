@@ -1,9 +1,12 @@
 {{#if posts.length}}
 <article class="post">
     <h1>Your Posts</h1>
+
     {{#each posts as |post|  }}
     <div class="post-info">
-        <h2>{{ title }}</h2>
+        <a class="edit-post" href="/dashboard/edit/{{ id }}">
+            <h2>{{ title }}</h2>
+        </a>
     </div>
     {{/each}}
 

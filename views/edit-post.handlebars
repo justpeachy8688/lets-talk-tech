@@ -4,17 +4,20 @@
 <h1>EDIT POST</h1>
 <div class="card">
     <form class="card-body edit-post-form" id="edit-post-form">
+        <input type="hidden" name="post-id" value="{{ post.id }}">
         <div class="row">
             {{!-- TITLE INPUT AREA --}}
             <label for="post-title" class="form-label">Title</label>
-            <input name="post-title" id="post-title" class="form-input">
+            <input name="post-title" value="{{ post.title }}" id="post-title" class="form-input">
         </div>
         {{!-- CONTENT INPUT AREA --}}
         <div class="row">
             <label for="content" class="form-label">Content</label>
-            <input name="content" id="content" class="form-input">
-            <button type="submit" id="edit-form-button" class="btn">Update</button>
-            <button type="submit" id="delete-button" class="btn">Delete</button>
+            <textarea name="content" id="content" class="form-input">{{post.content}}</textarea>
+            <button type="submit" id="edit-form-button" class="btn btn-primary">Update</button>
+            <button type="button" id="delete-button" class="btn btn-primary">Delete</button>
         </div>
     </form>
 </div>
+
+<script src="./js/edit.js"></script>
