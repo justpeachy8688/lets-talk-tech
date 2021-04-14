@@ -44,6 +44,7 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
+    console.log("We are in the edit id route");
     Post.findOne({
         where: {
             id: req.params.id
@@ -68,17 +69,20 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ]
     })
         .then(postData => {
+            console.log("We are in the .then!");
             if (!postData) {
                 res.status(404).json({
                     message: 'No post found with this id'
                 });
                 return;
             }
-
+            //HERE 
+            console.log("WE ARE HERE 80", postData)
             const post = postData.get({
                 plain: true
             });
-
+            //HERE
+            console.log("HERE 85", post);
             res.render('edit-post', {
                 post,
                 loggedIn: true

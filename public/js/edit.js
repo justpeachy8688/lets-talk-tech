@@ -1,6 +1,7 @@
 const postId = document.querySelector('input[name="post-id"]');
 
 const editFormHandler = async function (event) {
+    console.log("We're in the event handler!")
     event.preventDefault();
     // GO GRAB WHAT IS INSIDE THE TITLE INPUT AREA
     const title = document.querySelector('input[name="post-title"]').value;
